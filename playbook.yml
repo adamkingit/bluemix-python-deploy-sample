@@ -16,5 +16,7 @@
       no_log: True
     - name: CF api
       shell: "cf api"
+      register: hello
+    - debug: msg="{{ hello.stdout }}"
     - name: CF Push downloaded build
       shell: "cf push -f deploy/manifest.yml -u none"
