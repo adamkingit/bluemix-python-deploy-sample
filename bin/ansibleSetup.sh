@@ -1,4 +1,7 @@
 #!/bin/sh
 
-sudo apt-get -y install python-dev software-properties-common
+echo "----------------------------------- python version -----------------------------------"
+python --version
+
+sudo apt-get -y install python-dev python-setuptools software-properties-common
 sudo pip install ansible
