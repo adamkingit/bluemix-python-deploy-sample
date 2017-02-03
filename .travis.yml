@@ -24,9 +24,16 @@ before_deploy:
   - bash bin/downloadArtifacts.sh   #Get the files to deploy
 
 deploy:
-    - provider: script
-      skip_cleanup: true
-      script: bin/deploy.sh         #run ansible playbook to deploy app to bluemix
-      on:
-         branch: master
+    - deploy:
+        provider: ansible
+        skip_cleanup: true
+        edge:
+          source: adamkingit/dpl
+          branch: ansible
+        playbook: playbook.yml
+        forks: 3
+        flush-cache: true
+        debug: true
+        on:
+          branch: master
 
