@@ -12,7 +12,7 @@
     - name: Debug env stuff
       shell: "echo BLUEMIX_SPACE== {{ space }}"
     - name: CF Login
-      shell: "cf login -a https://api.ng.bluemix.net -u {{ username }} -p {{ password  }} -o {{ org }} -s {{ space }}"
+      shell: "cf login -a https://api.ng.bluemix.net -u {{ username }} -p {{ password  }} -o {{ org }} -s {{ space }} && cf push -f deploy/manifest.yml -u none"
       no_log: True
-    - name: CF Push downloaded build
-      shell: "cf push -f deploy/manifest.yml -u none"
+    # - name: CF Push downloaded build
+    #   shell: "cf push -f deploy/manifest.yml -u none"
