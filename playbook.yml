@@ -9,6 +9,8 @@
     org: "{{ lookup('env','BLUEMIX_ORGANIZATION') }}"
     space: "{{ lookup('env','BLUEMIX_SPACE') }}"
   tasks:
+    -name: Debug env stuff
+      shell: "echo BLUEMIX_SPACE== {{ space }}"
     - name: CF Login
       shell: "cf login -a https://api.ng.bluemix.net -u {{ username }} -p {{ password  }} -o {{ org }} -s {{ space }}"
       no_log: True
