@@ -19,21 +19,20 @@ script:
   - echo "Task here" #Just do a task here
 
 before_deploy:
-  - bash bin/cfSetup.sh             #Install cf
-  - bash bin/ansibleSetup.sh        #Install ansible
+#  - bash bin/cfSetup.sh             #Install cf
+#  - bash bin/ansibleSetup.sh        #Install ansible
   - bash bin/downloadArtifacts.sh   #Get the files to deploy
 
 deploy:
-    - deploy:
-        provider: ansible
-        skip_cleanup: true
-        edge:
-          source: adamkingit/dpl
-          branch: ansible
-        playbook: playbook.yml
-        forks: 3
-        flush-cache: true
-        debug: true
-        on:
-          branch: master
+  provider: ansible
+  skip_cleanup: true
+  edge:
+    source: adamkingit/dpl
+    branch: ansible
+  playbook: playbook.yml
+  forks: 3
+  flush-cache: true
+  debug: true
+  on:
+    branch: master
 
