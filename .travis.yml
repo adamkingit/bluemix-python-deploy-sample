@@ -24,6 +24,7 @@ addons:
 
 script:
   - echo "Task here" #Just do a task here
+  - ansible
 
 before_deploy:
 #  - bash bin/cfSetup.sh             #Install cf
