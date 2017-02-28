@@ -1,4 +1,3 @@
-sudo: required
 language: generic
 
 notifications:
@@ -14,14 +13,22 @@ notifications:
   # BM_SPACE
   # BM_ORGANIZATION
 
+addons:
+  apt:
+    sources:
+    - sourceline: 'ppa:ansible/ansible'
+    packages:
+    - software-properties-common
+    - python-virtualenv
+    - ansible
 
 script:
   - echo "Task here" #Just do a task here
 
 before_deploy:
-  - bash bin/cfSetup.sh             #Install cf
+#  - bash bin/cfSetup.sh             #Install cf
 #  - bash bin/ansibleSetup.sh        #Install ansible
-  - bash bin/downloadArtifacts.sh   #Get the files to deploy
+  # - bash bin/downloadArtifacts.sh   #Get the files to deploy
 
 deploy:
   provider: ansible
@@ -35,4 +42,3 @@ deploy:
   debug: true
   on:
     branch: master
-
